@@ -1,8 +1,8 @@
 /*
  * @Author: lixuming
  * @Date: 2026-09-15 16:32:10
- * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2026-09-15 17:14:10
+ * @LastEditors: lixuming 1493311067@qq.com
+ * @LastEditTime: 2026-09-17 17:27:15
  * @Description: 图层store
  * @FilePath: \openLayer-study\src\stores\layer.ts
  */
@@ -12,18 +12,21 @@ import { ref } from "vue";
 export const useLayerStore = defineStore("layer", () => {
   const layerList = ref<any[]>([
     {
+      id: 1,
       name: "矢量底图",
       url: "https://t0.tianditu.gov.cn/vec_w/wmts",
       // 标注图层
       bzUrl: "https://t0.tianditu.gov.cn/cva_w/wmts",
     },
     {
+      id: 2,
       name: "影像底图",
       url: "https://t0.tianditu.gov.cn/img_w/wmts",
       // 标注图层
       bzUrl: "https://t0.tianditu.gov.cn/cia_w/wmts",
     },
     {
+      id: 3,
       name: "地形图",
       url: "https://t0.tianditu.gov.cn/ter_w/wmts",
       // 标注图层
@@ -31,15 +34,15 @@ export const useLayerStore = defineStore("layer", () => {
     },
   ]);
 
-  const baseLayer = ref<any>(layerList.value[0] || null);
+  const currentLayer = ref<number>(2);
 
-  const setBaseLayer = (layer: any) => {
-    baseLayer.value = layer;
+  const setCurrentLayer = (layer: any) => {
+    currentLayer.value = layer;
   };
 
   return {
-    baseLayer,
-    setBaseLayer,
+    currentLayer,
+    setCurrentLayer,
     layerList,
   };
 });
