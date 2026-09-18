@@ -1,4 +1,4 @@
-import { ref, watch, onUnmounted } from "vue";
+import { ref, watch, onUnmounted, type Ref } from "vue";
 import Map from "ol/Map";
 import TileLayer from "ol/layer/Tile";
 import WMTS from "ol/source/WMTS";
@@ -80,7 +80,7 @@ function createLayerPair(cfg: BaseMapItem): LayerPair {
  * @param baseMapList 底图配置数组
  */
 export function useTiandituBaseMap(
-  mapInstance: ref<Map | null>,
+  mapInstance: Ref<Map | null>,
   baseMapList: BaseMapItem[],
 ) {
   // 当前选中索引，默认0矢量底图
@@ -123,8 +123,8 @@ export function useTiandituBaseMap(
     const map = mapInstance.value;
     if (!map) return;
     layerGroupList.value.forEach((group) => {
-      map.removeLayer(group.baseLayer);
-      map.removeLayer(group.labelLayer);
+      map.removeLayer(group.baseLayer as any);
+      map.removeLayer(group.labelLayer as any);
     });
     layerGroupList.value = [];
   }

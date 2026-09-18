@@ -1,9 +1,9 @@
 /**
  * 按需引入ant-design-vue
  */
-import { ConfigProvider, Button, Layout, Collapse } from "ant-design-vue";
+import { ConfigProvider, Button, Layout, Collapse, Input, Form } from "ant-design-vue";
 
-const components = [ConfigProvider, Button, Layout, Collapse];
+const components = [ConfigProvider, Button, Layout, Collapse, Input, Form];
 
 // 使用
 const useAntd = (app: any) => {
